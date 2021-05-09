@@ -1,10 +1,9 @@
-﻿
-
+﻿using Job.Customer.ExecuteCustomer.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace Job.Customer.ExecuteCustomer.Settings
 {
-    public class JobSettings
+    public class JobSettings : IJobSettings
     {
         private readonly IConfiguration _configuration;
 

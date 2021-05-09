@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Job.Customer.ExecuteCustomer.Interfaces;
+using Job.Customer.ExecuteCustomer.Settings;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -21,12 +23,8 @@ namespace Job.Customer.ExecuteCustomer
            {
                services.AddHostedService<Service>();
                services.AddSingleton(config);
-               //services.AddSingleton<IJobProcessarPropostaSettings, JobProcessarPropostaSettings>();
-               //services.AddSingleton<IConsigaMaisSettings, ConsigaMaisSettings>();
-               //services.AddScoped<IConsigaMaisAPI, ConsigaMaisAPI>();
-               //services.AddApplicationInsightsTelemetryWorkerService();
-               //services.AddSingleton<IApplicationInsightsService, ApplicationInsightsService>();
-               //services.AddSingleton<IApplicationInsightsSettings, ApplicationInsightsSettings>();
+               services.AddSingleton<IJobSettings, JobSettings>();
+
 
            });
         }
