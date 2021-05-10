@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Models\Response\" />
+    <Folder Include="Models\Request\" />
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Folder Include="Http\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>

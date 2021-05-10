@@ -21,7 +21,7 @@ namespace Job.Customer.ExecuteCustomer
         {
 
             _timer = new Timer(
-           (e) => ProcessarProposta(),
+           (e) => ExecuteCustomer(),
            null,
            TimeSpan.Zero,
            TimeSpan.FromMinutes(Convert.ToDouble(20)));
@@ -30,7 +30,7 @@ namespace Job.Customer.ExecuteCustomer
 
         }
 
-        private async void ProcessarProposta()
+        private async void ExecuteCustomer()
         {
            
            
