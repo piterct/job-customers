@@ -1,5 +1,6 @@
 ﻿using Job.Customer.ExecuteCustomer.Interfaces;
 using Job.Customer.ExecuteCustomer.Models;
+using Job.Customer.ExecuteCustomer.Models.Response;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading;
@@ -12,14 +13,12 @@ namespace Job.Customer.ExecuteCustomer
     {
 
         private readonly IJobSettings _jobSettings;
-        private readonly ICustomerAPISettings _customerAPISettings;
         private readonly ICustomerAPI _customerAPI;
         private Timer _timer;
 
-        public Service(IJobSettings jobSettings, ICustomerAPISettings customerAPISettings, ICustomerAPI customerAPI)
+        public Service(IJobSettings jobSettings, ICustomerAPI customerAPI)
         {
             _jobSettings = jobSettings;
-            _customerAPISettings = customerAPISettings;
             _customerAPI = customerAPI;
         }
 
@@ -40,12 +39,12 @@ namespace Job.Customer.ExecuteCustomer
         {
             try
             {
-                
+                CustomersResponse customers = await _customerAPI.GetCustomers();
             }
 
             catch (Exception ex)
             {
-              
+
                 new LogJobErrorModel
                 {
                     Message = ex.Message,
@@ -59,7 +58,7 @@ namespace Job.Customer.ExecuteCustomer
 
             finally
             {
-                    new LogJobModel { Message = "Job Finished", Area = "Execute Customer", Date = DateTime.Now };
+                new LogJobModel { Message = "Job Finished", Area = "Execute Customer", Date = DateTime.Now };
             }
 
         }

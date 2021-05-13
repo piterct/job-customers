@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Job.Customer.ExecuteCustomer.Models.Customer;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Job.Customer.ExecuteCustomer.Models.Response
 {
     public class CustomersResponse
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Cpf { get; set; }
-        public decimal Salary { get; set; }
+        public List<CustomerModel> Data { get; set; }
     }
+
 }

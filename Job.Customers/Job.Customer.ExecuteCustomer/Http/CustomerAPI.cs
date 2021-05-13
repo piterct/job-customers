@@ -15,7 +15,7 @@ namespace Job.Customer.ExecuteCustomer.Http
         {
             _customerAPISettings = customerAPISettings;
         }
-        public async ValueTask<CustomersResponse> GetTokenConsigaMaisAsync()
+        public async ValueTask<CustomersResponse> GetCustomers()
         {
             var result = await HttpRequestFactory.Get(string.Concat(_customerAPISettings.ApiBasePath, _customerAPISettings.ApiPath), timeOut, string.Empty);
 
