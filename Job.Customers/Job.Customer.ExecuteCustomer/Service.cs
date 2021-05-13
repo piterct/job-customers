@@ -12,13 +12,13 @@ namespace Job.Customer.ExecuteCustomer
     public class Service : IHostedService, IDisposable
     {
 
-        private readonly IJobSettings _jobSettings;
+        private readonly IJobConfiguration _jobConfiguration;
         private readonly ICustomerAPI _customerAPI;
         private Timer _timer;
 
-        public Service(IJobSettings jobSettings, ICustomerAPI customerAPI)
+        public Service(IJobConfiguration jobConfiguration, ICustomerAPI customerAPI)
         {
-            _jobSettings = jobSettings;
+            _jobConfiguration = jobConfiguration;
             _customerAPI = customerAPI;
         }
 
@@ -29,7 +29,7 @@ namespace Job.Customer.ExecuteCustomer
            (e) => ExecuteCustomer(),
            null,
            TimeSpan.Zero,
-           TimeSpan.FromMinutes(Convert.ToDouble(_jobSettings.ExecuteInterval)));
+           TimeSpan.FromMinutes(Convert.ToDouble(_jobConfiguration.ExecuteInterval)));
 
             return Task.CompletedTask;
 

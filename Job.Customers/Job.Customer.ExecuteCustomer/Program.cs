@@ -1,4 +1,5 @@
-﻿using Job.Customer.ExecuteCustomer.Http;
+﻿using Job.Customer.ExecuteCustomer.Configurations;
+using Job.Customer.ExecuteCustomer.Http;
 using Job.Customer.ExecuteCustomer.Interfaces;
 using Job.Customer.ExecuteCustomer.Settings;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +25,7 @@ namespace Job.Customer.ExecuteCustomer
            {
                services.AddHostedService<Service>();
                services.AddSingleton(config);
-               services.AddSingleton<IJobSettings, JobSettings>();
+               services.AddSingleton<IJobConfiguration, JobConfiguration>();
                services.AddSingleton<ICustomerAPISettings, CustomerAPISettings>();
                services.AddScoped<ICustomerAPI, CustomerAPI>();
 

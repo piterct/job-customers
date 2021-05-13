@@ -1,6 +1,6 @@
 ﻿namespace Job.Customer.ExecuteCustomer.Interfaces
 {
-    public interface IJobSettings
+    public interface IJobConfiguration
     {
         public string ExecuteInterval { get; }
     }
