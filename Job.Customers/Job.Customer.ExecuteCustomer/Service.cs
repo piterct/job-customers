@@ -46,20 +46,20 @@ namespace Job.Customer.ExecuteCustomer
             catch (Exception ex)
             {
               
-                new LogJobErroModel
+                new LogJobErrorModel
                 {
-                    Mensagem = ex.Message,
+                    Message = ex.Message,
                     Area = "Execute Customer",
-                    OcorreuEm = DateTime.Now,
-                    TipoException = ex.GetType().Name,
+                    Date = DateTime.Now,
+                    TypeException = ex.GetType().Name,
                     StackTrace = ex.StackTrace
-                });
+                };
 
             }
 
             finally
             {
-                    new LogJobModel { Mensagem = "Job Finished", Area = "Execute Customer", OcorreuEm = DateTime.Now };
+                    new LogJobModel { Message = "Job Finished", Area = "Execute Customer", Date = DateTime.Now };
             }
 
         }
