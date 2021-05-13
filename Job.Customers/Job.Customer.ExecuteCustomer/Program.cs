@@ -1,4 +1,5 @@
-﻿using Job.Customer.ExecuteCustomer.Interfaces;
+﻿using Job.Customer.ExecuteCustomer.Http;
+using Job.Customer.ExecuteCustomer.Interfaces;
 using Job.Customer.ExecuteCustomer.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ namespace Job.Customer.ExecuteCustomer
 {
     internal class Program
     {
-        private static async Task  Main(string[] args)
+        private static async Task Main(string[] args)
         {
 
             var isService = !(Debugger.IsAttached || args.Contains("--console"));
@@ -24,9 +25,19 @@ namespace Job.Customer.ExecuteCustomer
                services.AddHostedService<Service>();
                services.AddSingleton(config);
                services.AddSingleton<IJobSettings, JobSettings>();
-
+               services.AddSingleton<ICustomerAPISettings, CustomerAPISettings>();
+               services.AddScoped<ICustomerAPI, CustomerAPI>();
 
            });
+
+            if (isService)
+            {
+                await builder.RunAsServiceAsync();
+            }
+            else
+            {
+                await builder.RunConsoleAsync();
+            }
         }
 
         public static IConfiguration LoadConfiguration()
