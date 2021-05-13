@@ -12,7 +12,6 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Folder Include="Http\" />
   </ItemGroup>
 
   <ItemGroup>
